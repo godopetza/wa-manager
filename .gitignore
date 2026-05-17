@@ -1,0 +1,22 @@
+# Go
+*.exe
+*.test
+*.out
+vendor/
+dist/
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/.vercel/
+frontend/.env
+frontend/.env.local
+
+# Env
+.env
+.env.local
+
+# Misc
+.DS_Store
+*.pem
+*.key
