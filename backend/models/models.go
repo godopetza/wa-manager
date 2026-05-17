@@ -21,15 +21,15 @@ type WATemplate struct {
 
 type ContactGroup struct {
 	gorm.Model
-	Name      string      `gorm:"uniqueIndex;not null"`
-	Contacts  []Contact   `gorm:"foreignKey:GroupID"`
-	Campaigns []Campaign  `gorm:"foreignKey:GroupID"`
+	Name      string     `gorm:"uniqueIndex;not null"`
+	Contacts  []Contact  `gorm:"foreignKey:GroupID"`
+	Campaigns []Campaign `gorm:"foreignKey:GroupID"`
 }
 
 type Contact struct {
 	gorm.Model
-	GroupID uint           `gorm:"not null;index"`
-	Phone   string         `gorm:"not null"` // E.164 without +
+	GroupID uint   `gorm:"not null;index"`
+	Phone   string `gorm:"not null"` // E.164 without +
 	Name    string
 	Tags    datatypes.JSON // {"key":"value"} for template variable substitution
 }
@@ -54,8 +54,8 @@ type Campaign struct {
 // WAMessageID is the wamid returned by Meta — used to correlate delivery webhooks.
 type CampaignMessage struct {
 	gorm.Model
-	CampaignID  uint    `gorm:"not null;index"`
-	ContactID   uint    `gorm:"not null"`
+	CampaignID  uint `gorm:"not null;index"`
+	ContactID   uint `gorm:"not null"`
 	Contact     Contact
 	Phone       string
 	Status      string `gorm:"default:'pending'"` // pending, sent, delivered, read, failed
